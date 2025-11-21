@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Booking - Gites - Les 4 Nations</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Gites - Les 4 Nations</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="services.html">Spa & Wellness</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact & Booking</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you. Send us a message for booking inquiries or questions.</p>
+        </section>
+
+        <section class="content-section contact-layout">
+            <div class="contact-form">
+                <h2>Send a Message</h2>
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+
+                    <button type="submit" class="cta-button">Send</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <p><strong>Email:</strong> <a href="mailto:info@gitesles4nations.com">info@gitesles4nations.com</a></p>
+                <p><strong>Phone:</strong> (123) 456-7890</p>
+                <p><strong>Address:</strong> 123 Country Lane, Farmville, USA</p>
+
+                <!-- Placeholder for a map -->
+                <div class="map-placeholder">
+                    <p>Map Area</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Gites - Les 4 Nations. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
+
+<style>
+    .contact-layout {
+        display: flex;
+        gap: 3rem;
+    }
+
+    .contact-form {
+        flex: 2;
+    }
+
+    .contact-info {
+        flex: 1;
+    }
+
+    .contact-form form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-form label {
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.8rem;
+        margin-top: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .contact-form .cta-button {
+        margin-top: 2rem;
+        align-self: flex-start;
+        border: none;
+        cursor: pointer;
+    }
+
+    .map-placeholder {
+        margin-top: 2rem;
+        height: 300px;
+        background-color: #E8E2D9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #5a6e5a;
+        border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .contact-layout {
+            flex-direction: column;
+        }
+    }
+</style>

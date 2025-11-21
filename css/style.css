@@ -1,0 +1,156 @@
+/* Basic Reset & Body Style */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0.1rem;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5a6e5a;
+    /* Earthy green */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #8c7851;
+    /* Earthy brown */
+}
+
+/* Main Content */
+main {
+    padding: 0;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('../images/Normandy traditionnal style - appartment.jpg');
+    /* Placeholder image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 1rem 1rem 3rem 1rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: #5a6e5a;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #495a49;
+}
+
+/* Intro & Features Sections */
+.intro,
+.features {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.intro {
+    background-color: #faf8f5;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.feature {
+    flex-basis: 400px;
+    padding: 2rem;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.feature a {
+    color: #8c7851;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+/* Generic Page Header */
+.page-header {
+    background-color: #faf8f5;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #5a6e5a;
+}
+
+/* Content Section */
+.content-section {
+    padding: 1rem 1rem 0rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
