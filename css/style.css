@@ -133,7 +133,7 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 1.5rem;
+    padding: 0.5rem;
 }
 
 /* Generic Page Header */
@@ -150,7 +150,7 @@ footer {
 
 /* Content Section */
 .content-section {
-    padding: 1rem 1rem 0rem 1rem;
+    padding: 0rem 1rem 0.5rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
 }
