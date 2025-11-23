@@ -11,14 +11,32 @@ body {
 /* Header and Navigation */
 header {
     background-color: #fff;
-    padding: 1rem 2rem;
     border-bottom: 1px solid #eee;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+.address-bar {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.address-bar a {
+    color: #5a6e5a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.address-bar a:hover {
+    color: #8c7851;
+}
+
 nav {
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,6 +125,10 @@ main {
     background-color: #faf8f5;
 }
 
+.intro p {
+    margin: 0.5rem 0;
+}
+
 .features {
     display: flex;
     justify-content: center;
@@ -140,7 +162,7 @@ footer {
 .page-header {
     background-color: #faf8f5;
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 1rem;
 }
 
 .page-header h1 {

@@ -4,50 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - The Serene Farmhouse</title>
+    <title>Gallery - Gites & Spa - Les 4 Nations</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <div class="logo">Gites - Les 4 Nations</div>
+            <div class="logo">Gites & Spa - Les 4 Nations</div>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="rooms.html">Rooms</a></li>
                 <li><a href="services.html">Spa & Wellness</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">Discover</a></li>
                 <li><a href="contact.html">Contact & Booking</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="page-header">
+        <section class="page-header" id="Gallery">
             <h1>Gallery</h1>
             <p>A glimpse into the beauty of our farmhouse.</p>
         </section>
 
         <section class="content-section">
             <div class="gallery-grid">
-                <img src="images/farmhouse_exterior.jpg" alt="Gallery image 1">
-                <img src="images/terrasse.jpg" alt="Gallery image 2">
-                <img src="images/Normandy traditionnal style - appartment.jpg" alt="Gallery image 3">
-                <img src="images/first appartment bedroom 1.jpg" alt="Gallery image 4">
-                <img src="images/appartment 1 - living room. picture 2.jpg" alt="Gallery image 5">
-                <img src="images/master bedroom iin duplex.jpg" alt="Gallery image 6">
-                <img src="images/first appartment - first bedroom - second picture.jpg" alt="Gallery image 7">
-                <img src="images/1st appartment. bathrooom.jpg" alt="Gallery image 8">
-                <img src="images/garden.jpg" alt="Gallery image 9">
-                <img src="images/spa picture 1.jpg" alt="Gallery image 10">
-                <img src="images/spa and sauna.jpg" alt="Gallery image 11">
-            </div>
+                <!-- Garden & Outdoor -->
+                <img src="images/garden.jpg" alt="Garden">
+                <img src="images/terrasse.jpg" alt="Terrace">
+                <img src="images/Normandy traditionnal style - appartment.jpg" alt="Normandy traditional style">            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Gites - Les 4 Nations. All rights reserved.</p>
+        <p>&copy; 2025 Gites & Spa - Les 4 Nations. All rights reserved.</p>
     </footer>
 </body>
 
@@ -61,8 +53,9 @@
     }
 
     .gallery-grid img {
-        width: 25%;
-        height: auto;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
         border-radius: 8px;
     }
 </style>
