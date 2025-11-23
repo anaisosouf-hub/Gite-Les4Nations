@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Réservation - Gîtes & Spa - Les 4 Nations</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Gîtes & Spa - Les 4 Nations</div>
+            <div class="language-switcher">
+                <a href="contact-en.html">🇬🇧 EN</a> | 
+                <a href="contact-fr.html">🇫🇷 FR</a>
+            </div>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="rooms-fr.html">Hébergements</a></li>
+                <li><a href="services-fr.html">Spa & Bien-être</a></li>
+                <li><a href="gallery-fr.html">Galerie</a></li>
+                <li><a href="about-fr.html">Découvrir</a></li>
+                <li><a href="contact-fr.html">Contact & Réservation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Nous Contacter</h1>
+            <p>Nous serions ravis de vous entendre. Envoyez-nous un message pour toute demande de réservation ou question.</p>
+        </section>
+
+        <section class="content-section contact-layout">
+            <div class="contact-form">
+                <h2>Envoyer un Message</h2>
+                <form>
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+
+                    <button type="submit" class="cta-button">Envoyer</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h2>Coordonnées</h2>
+                <p><strong>Email :</strong> <a href="mailto:info@gitesles4nations.com">info@gitesles4nations.com</a></p>
+                <p><strong>Téléphone :</strong> (123) 456-7890</p>
+                <p><strong>Adresse :</strong> Saint-Martin-de-Fresnay</p>
+
+                <!-- Google Maps -->
+                <div class="map-placeholder">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42097.89!2d0.0944!3d49.0944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e1b5e6c3c5e5e5%3A0x5e5e5e5e5e5e5e5e!2sSaint-Martin-de-Fresnay%2C%2014170%20Saint-Pierre-en-Auge%2C%20France!5e0!3m2!1sfr!2sfr!4v1234567890123!5m2!1sfr!2sfr"
+                        width="100%" 
+                        height="300" 
+                        style="border:0; border-radius: 8px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Gîtes & Spa - Les 4 Nations. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>

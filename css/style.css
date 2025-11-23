@@ -19,10 +19,12 @@ header {
 
 .address-bar {
     background-color: #f8f8f8;
-    text-align: center;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem;
     font-size: 0.9rem;
     border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .address-bar a {
@@ -175,4 +177,284 @@ footer {
     padding: 0rem 1rem 0.5rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/* About Page Styles */
+.about-page-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.about-page-main {
+    flex: 1;
+}
+
+.explore-area-section {
+    background-color: #faf8f5;
+    padding: 2rem 1rem;
+    margin-top: 0;
+}
+
+.explore-area-title {
+    text-align: center;
+    color: #5a6e5a;
+    margin-bottom: 2rem;
+}
+
+.explore-area-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.attraction-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.attraction-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.attraction-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.attraction-card h3 {
+    color: #5a6e5a;
+    margin-top: 0;
+}
+
+.attraction-distance {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.attraction-link {
+    color: #8c7851;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nearby-note {
+    text-align: center;
+    margin-top: 2rem;
+    color: #666;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.about-content img {
+    max-width: 400px;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+}
+
+/* Gallery Page Styles */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Language Switcher Styles */
+.language-switcher {
+    margin-left: auto;
+    padding-right: 1rem;
+}
+
+.language-switcher a {
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Rooms Page Styles */
+.room-listing {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.room-listing img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.horizontal-scroll-gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.horizontal-scroll-gallery img {
+    height: 300px;
+    width: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.horizontal-scroll-gallery::-webkit-scrollbar {
+    height: 8px;
+}
+
+.horizontal-scroll-gallery::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.horizontal-scroll-gallery::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.horizontal-scroll-gallery::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.cottage-info-section {
+    margin-top: 1rem;
+    padding-top: 2rem;
+    border-top: 2px solid #d0d0d0;
+    background-color: #f5f5f5;
+}
+
+.amenities-sections {
+    margin-top: 2rem;
+}
+
+.amenity-details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 0;
+    overflow: hidden;
+}
+
+.amenity-details summary {
+    padding: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    background-color: #fafafa;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.amenity-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.amenity-details summary::after {
+    content: " ▼";
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.amenity-details[open] summary::after {
+    transform: rotate(-180deg);
+}
+
+.amenity-details summary:hover {
+    background-color: #f0f0f0;
+}
+
+.amenity-details ul {
+    padding: 1rem 2rem;
+    margin: 0;
+    list-style: disc;
+}
+
+.amenity-details li {
+    padding: 0.25rem 0;
+}
+
+/* Contact Page Styles */
+.contact-layout {
+    display: flex;
+    gap: 3rem;
+}
+
+.contact-form {
+    flex: 2;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form .cta-button {
+    margin-top: 2rem;
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+}
+
+.map-placeholder {
+    margin-top: 2rem;
+    height: 300px;
+    background-color: #E8E2D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5a6e5a;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .contact-layout {
+        flex-direction: column;
+    }
 }

@@ -12,13 +12,17 @@
     <header>
         <nav>
             <div class="logo">Gites & Spa - Les 4 Nations</div>
+            <div class="language-switcher">
+                <a href="contact-en.html">🇬🇧 EN</a> | 
+                <a href="contact-fr.html">🇫🇷 FR</a>
+            </div>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rooms.html">Rooms</a></li>
-                <li><a href="services.html">Spa & Wellness</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="about.html">Discover</a></li>
-                <li><a href="contact.html">Contact & Booking</a></li>
+                <li><a href="index-en.html">Home</a></li>
+                <li><a href="rooms-en.html">Rooms</a></li>
+                <li><a href="services-en.html">Spa & Wellness</a></li>
+                <li><a href="gallery-en.html">Gallery</a></li>
+                <li><a href="about-en.html">Discover</a></li>
+                <li><a href="contact-en.html">Contact & Booking</a></li>
             </ul>
         </nav>
     </header>
@@ -49,11 +53,19 @@
                 <h2>Contact Information</h2>
                 <p><strong>Email:</strong> <a href="mailto:info@gitesles4nations.com">info@gitesles4nations.com</a></p>
                 <p><strong>Phone:</strong> (123) 456-7890</p>
-                <p><strong>Address:</strong> 123 Country Lane, Farmville, USA</p>
+                <p><strong>Address:</strong> Saint-Martin-de-Fresnay</p>
 
-                <!-- Placeholder for a map -->
+                <!-- Google Maps -->
                 <div class="map-placeholder">
-                    <p>Map Area</p>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d42097.89!2d0.0944!3d49.0944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e1b5e6c3c5e5e5%3A0x5e5e5e5e5e5e5e5e!2sSaint-Martin-de-Fresnay%2C%2014170%20Saint-Pierre-en-Auge%2C%20France!5e0!3m2!1sen!2sfr!4v1234567890123!5m2!1sen!2sfr"
+                        width="100%" 
+                        height="300" 
+                        style="border:0; border-radius: 8px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </section>
@@ -65,61 +77,3 @@
 </body>
 
 </html>
-
-<style>
-    .contact-layout {
-        display: flex;
-        gap: 3rem;
-    }
-
-    .contact-form {
-        flex: 2;
-    }
-
-    .contact-info {
-        flex: 1;
-    }
-
-    .contact-form form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .contact-form label {
-        margin-top: 1rem;
-        font-weight: bold;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 0.8rem;
-        margin-top: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1rem;
-    }
-
-    .contact-form .cta-button {
-        margin-top: 2rem;
-        align-self: flex-start;
-        border: none;
-        cursor: pointer;
-    }
-
-    .map-placeholder {
-        margin-top: 2rem;
-        height: 300px;
-        background-color: #E8E2D9;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #5a6e5a;
-        border-radius: 8px;
-    }
-
-    @media (max-width: 768px) {
-        .contact-layout {
-            flex-direction: column;
-        }
-    }
-</style>
