@@ -34,7 +34,7 @@ header {
 }
 
 .address-bar a:hover {
-    color: #8c7851;
+    color: #0d8b54;
 }
 
 nav {
@@ -70,7 +70,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #8c7851;
+    color: #0d8b54;
     /* Earthy brown */
 }
 
@@ -158,6 +158,11 @@ main {
     color: #8c7851;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.feature a:hover {
+    color: #0d8b54;
 }
 
 /* Footer */
@@ -182,11 +187,11 @@ footer .social-link a {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 footer .social-link a:hover {
-    opacity: 0.8;
+    color: #1877f2;
 }
 
 footer .social-link svg {
@@ -281,6 +286,11 @@ footer .social-link svg {
     color: #8c7851;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.attraction-link:hover {
+    color: #0d8b54;
 }
 
 .nearby-note {
@@ -337,6 +347,16 @@ footer .social-link svg {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
+}
+
+.room-listing a {
+    color: #5b9bd5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.room-listing a:hover {
+    color: #0d8b54;
 }
 
 .room-listing img {
