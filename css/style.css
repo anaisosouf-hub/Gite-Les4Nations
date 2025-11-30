@@ -24,17 +24,28 @@ header {
     border-bottom: 1px solid #e0e0e0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
-.address-bar a {
+.location-info {
+    display: flex;
+    align-items: center;
+}
+
+.location-info span {
+    color: #666;
+    margin-right: 0.5rem;
+}
+
+.location-info a {
     color: #5a6e5a;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.address-bar a:hover {
-    color: #0d8b54;
+.location-info a:hover {
+    color: #1d9762;
+    text-decoration: underline;
 }
 
 nav {
@@ -67,11 +78,16 @@ nav ul li a {
     color: #333;
     font-weight: 500;
     transition: color 0.3s ease;
+    display: inline-block;
 }
 
 nav ul li a:hover {
-    color: #0d8b54;
-    /* Earthy brown */
+    color: #23d689;
+}
+nav ul li a:active {
+    color: #23d689;
+    transform: scale(1.1);
+    transition: transform 0.1s, color 0.3s;
 }
 
 /* Main Content */
@@ -290,7 +306,7 @@ footer .social-link svg {
 }
 
 .attraction-link:hover {
-    color: #0d8b54;
+    color: #16ba73;
 }
 
 .nearby-note {
@@ -340,6 +356,11 @@ footer .social-link svg {
 .language-switcher a {
     text-decoration: none;
     padding: 0.25rem 0.5rem;
+    color:black;
+}
+
+.language-switcher a:hover {
+    font-weight: bold;
 }
 
 /* Rooms Page Styles */
