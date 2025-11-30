@@ -147,6 +147,13 @@ main {
     border-radius: 8px;
 }
 
+.feature img {
+    height: 300px;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+}
+
 .feature a {
     color: #8c7851;
     text-decoration: none;
@@ -486,6 +493,10 @@ footer .social-link svg {
         flex-direction: column;
     }
 
+    header {
+        position: relative;
+    }
+
     nav {
         flex-direction: column;
         padding: 1rem;
@@ -518,5 +529,10 @@ footer .social-link svg {
     .address-bar {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
+    }
+
+    .feature img {
+        height: auto;
+        width: 100%;
     }
 }
