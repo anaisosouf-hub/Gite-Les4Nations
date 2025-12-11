@@ -1,0 +1,11 @@
+# Robots.txt for Gîtes Les 4 Nations
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://gite-les4nations.azurewebsites.net/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
