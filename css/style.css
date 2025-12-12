@@ -599,4 +599,12 @@ footer .social-link svg {
         object-fit: cover;
         object-position: center;
     }
+
+    footer {
+        font-size: 0.85rem;
+    }
+
+    footer .social-link a {
+        font-size: 0.85rem;
+    }
 }
