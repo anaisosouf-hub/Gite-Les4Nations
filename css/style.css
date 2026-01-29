@@ -60,6 +60,14 @@ nav .logo {
     font-weight: bold;
     color: #5a6e5a;
     /* Earthy green */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+nav .logo .logo-img {
+    height: 40px;
+    width: auto;
 }
 
 nav ul {
