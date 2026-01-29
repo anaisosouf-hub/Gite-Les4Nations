@@ -38,6 +38,6 @@ jobs:
       - name: Deploy to Azure Web App (Test)
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'Gite-Les4Nations-TST'
+          app-name: 'Gites-Les4Nations-TST'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_TEST }}
           package: .
