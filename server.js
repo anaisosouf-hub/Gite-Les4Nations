@@ -5,18 +5,16 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Serve static files from the root directory
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, {
+  extensions: ['html']
+}));
 
-// Handle routes for HTML files without extension
-app.get('*', (req, res) => {
-  const filePath = path.join(__dirname, req.path);
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      res.status(404).send('Not found');
-    }
-  });
+// Fallback to index.html for root
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, () => {
+// Listen on all network interfaces (required for Azure)
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
