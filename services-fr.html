@@ -27,7 +27,10 @@
             </div>
         </div>
         <nav>
-            <div class="logo">Gîtes & Spa - Les 4 Nations</div>
+            <div class="logo">
+                Gîtes & Spa - Les 4 Nations
+                <img src="Picture_Logo.png" alt="Logo" class="logo-img">
+            </div>
             <div class="language-switcher">
                 <a href="services-en.html">🇬🇧 EN</a> | 
                 <a href="services-fr.html">🇫🇷 FR</a>
@@ -37,7 +40,7 @@
                 <li><a href="rooms-fr.html">Hébergements</a></li>
                 <li><a href="services-fr.html">Spa & Bien-être</a></li>
                 <li><a href="gallery-fr.html">Galerie</a></li>
-                <li><a href="about-fr.html">Découvrir</a></li>
+                <li><a href="about-fr.html">Alentours</a></li>
                 <li><a href="contact-fr.html">Contact & Réservation</a></li>
             </ul>
         </nav>
@@ -53,8 +56,21 @@
             </div>
         </section>
 
+        <section style="background-color: #faf8f5; padding: 1rem 0; margin-bottom: 1.5rem; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;">
+            <nav style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;" class="services-nav">
+                <p style="margin: 0.5rem 0; font-weight: bold; white-space: nowrap;">Sur cette page :</p>
+                <ul>
+                    <li><a href="#spa-privatif">Le Spa Privatif</a></li>
+                    <li><a href="#soins-massages">Soins et Massages</a></li>
+                    <li><a href="#formules">Formules</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <hr style="border: none; border-top: 3px solid #d4c5b0; margin: 2rem 0;">
+
         <section class="content-section">
-            <h2>Le Spa Privatif</h2>
+            <h2 id="spa-privatif">Le Spa Privatif</h2>
             <p>Venez vous détendre dans notre spa privatif—seul(e), avec votre proche, ou entre amis.</p>
             <p>Jacuzzi, sauna et espace détente pour jusqu'à 6 personnes. Les clients doivent avoir 16 ans ou plus. Les mineurs de moins de 18 ans doivent être accompagnés d'un adulte.</p>
 
@@ -69,37 +85,111 @@
             <p style="margin-top: 1.5rem;"><strong>Veuillez noter :</strong> Lors de la réservation d'un gîte, veuillez préciser si vous souhaitez réserver un créneau spa. (Massages non disponibles les 6 et 7 novembre). (Spa et massages non disponibles du 19 au 25 décembre).</p>
         </section>
 
-        <hr style="border: none; border-top: 1px solid #d4c5b0; margin: 1rem 0;">
+        <hr style="border: none; border-top: 3px solid #d4c5b0; margin: 2rem 0;">
 
         <section class="content-section">
-            <h2>Soins et Massages</h2>
-            <p><em>Nous utilisons les produits <a href="https://www.secretsdemiel.com/" target="_blank" rel="noopener noreferrer" style="color: #8c7851; text-decoration: none; font-weight: bold;">"Secrets de Miel"</a> dans nos services</em></p>
+            <h2 id="soins-massages">Soins et Massages</h2>
+            <p style="text-align: center; width: 100%; margin-left: 0;"><em>Nous utilisons les produits <a href="https://www.secretsdemiel.com/" target="_blank" rel="noopener noreferrer" style="color: #8c7851; text-decoration: none; font-weight: bold;">"Secrets de Miel"</a> dans nos services</em></p>
 
-            <div class="service-item">
-                <h3>Soins du Visage</h3>
-                <ul>
-                    <li>Soin du visage : 38 €</li>
-                    <li>Soin complet du visage : 48 €</li>
-                    <li>Massage visage et cou : 30 €</li>
-                </ul>
+            <div class="treatments-columns">
+                <div class="treatments-column">
+                    <div class="service-item">
+                        <h3>Soin nettoyant visage : 38 €</h3>
+                        <p>Produits choisis selon le type de peau, démaquillage, gommage et masque (30/45 min)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Soin visage complet : 48 €</h3>
+                        <p>Soin nettoyant avec massage du visage (1h)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Massage visage et cou : 30 €</h3>
+                        <p>Massage du visage et du cou (30 min)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Massage californien : 60 € (1h) / 75 € (1h30)</h3>
+                        <p>Massage de la tête aux pieds</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Massage aux coquillages chauds : 75 €</h3>
+                        <p>Massage de la tête aux pieds réalisé avec des coquillages (1h15)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Massage dos : 35 €</h3>
+                        <p>Massage détente du dos (30 min)</p>
+                    </div>
+                </div>
+
+                <div class="treatments-column">
+                    <div class="service-item">
+                        <h3>Gommage corps : 35 €</h3>
+                        <p>Gommage des épaules aux pieds et une application de crème hydratante (30 min)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Soins complémentaires : 5 €</h3>
+                        <p>Au choix :</p>
+                        <ul>
+                            <li>Massage du cuir chevelu (5 min)</li>
+                            <li>Massage des mains (5 min)</li>
+                            <li>Soin des yeux (5 min)</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Soin fermeté corps : 10 €</h3>
+                        <p>Application d'un lait hydra-fermeté ou gel raffermissant et massage plus soutenu (15 min)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Soin complet des mains/pieds : 15 €</h3>
+                        <p>Au choix mains ou pieds, gommage, massage et application d'une crème adaptée (15/20 min)</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="service-item">
-                <h3>Soins du Corps</h3>
-                <ul>
-                    <li>Massage du dos : 60 €</li>
-                    <li>Massage californien : 60 €</li>
-                    <li>Gommage du corps : 35 €</li>
-                    <li>Soin du corps : 8 €</li>
-                </ul>
-            </div>
+        <hr style="border: none; border-top: 3px solid #d4c5b0; margin: 2rem 0;">
 
-            <div class="service-item">
-                <h3>Autres Soins</h3>
-                <ul>
-                    <li>Soin complet mains et pieds : 15 €</li>
-                    <li>Soins supplémentaires : sur demande</li>
-                </ul>
+        <section class="content-section">
+            <h2 id="formules">Formules</h2>
+
+            <div class="treatments-columns">
+                <div class="treatments-column">
+                    <div class="service-item">
+                        <h3>Détente simple : 36 €</h3>
+                        <p>Massage visage, cou, mains et pieds (40 min)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Peau nette : 65 €</h3>
+                        <p>Soin nettoyant visage et gommage corps (1h15)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Beauté et bien-être : 65 €</h3>
+                        <p>Gommage corps et massage dos (1h)</p>
+                    </div>
+                </div>
+
+                <div class="treatments-column">
+                    <div class="service-item">
+                        <h3>Détente absolue : 115 €</h3>
+                        <p>Accès spa en solo 1h, soin visage complet et massage californien d'1h (3h)</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>Formule Duo : 110 €</h3>
+                        <ul>
+                            <li>1 soin au choix par personne : Massage dos ou gommage corps (30 min chacun)</li>
+                            <li>Accès spa pour 2 (1h30)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
