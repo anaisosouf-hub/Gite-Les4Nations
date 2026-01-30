@@ -116,18 +116,31 @@ main {
     text-align: center;
     padding: 4rem 1rem;
     min-height: 400px;
+    position: relative;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
 }
 
 .hero h1 {
     font-size: 3.5rem;
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    margin: 0;
+    text-align: left;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button {
@@ -268,6 +281,8 @@ footer .social-link svg {
     text-align: center;
     color: #5a6e5a;
     margin-bottom: 2rem;
+    font-family: 'MonteCarlo', cursive;
+    font-size: 2.5rem;
 }
 
 .explore-area-intro {
