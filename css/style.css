@@ -157,6 +157,27 @@ main {
     background-color: #495a49;
 }
 
+.booking-button {
+    display: inline-block;
+    background-color: white;
+    color: #5a6e5a;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #5a6e5a;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.booking-button:hover {
+    background-color: white;
+    border-color: #495a49;
+    color: #495a49;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Intro & Features Sections */
 .intro,
 .features {
@@ -477,9 +498,13 @@ footer .social-link svg {
 
 /* Rooms Page Styles */
 .room-listing {
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 3px solid #5a6e5a;
+}
+
+.room-listing:last-of-type {
+    border-bottom: none;
 }
 
 .room-listing a {
@@ -533,10 +558,15 @@ footer .social-link svg {
 }
 
 .cottage-info-section {
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 2px solid #d0d0d0;
+    border-top: 3px solid #5a6e5a;
     background-color: #f5f5f5;
+}
+
+#extra-options {
+    padding-top: 1rem;
+    margin-bottom: 3rem;
 }
 
 .amenities-sections {
