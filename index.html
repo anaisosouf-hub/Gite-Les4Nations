@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
     <header>
         <div class="address-bar">
             <div class="location-info">
@@ -23,15 +24,15 @@
                     Saint-Martin de Fresnay, Saint-Pierre-en-Auge, France
                 </a>
             </div>
-            <div class="language-switcher">
-                <a href="index-en.html">🇬🇧 EN</a> | 
-                <a href="index.html">🇫🇷 FR</a>
+            <div class="language-switcher" role="navigation" aria-label="Sélection de la langue">
+                <a href="index-en.html" lang="en" aria-label="English version"><span aria-hidden="true">🇬🇧</span> EN</a> | 
+                <a href="index.html" lang="fr" aria-label="Version française" aria-current="page"><span aria-hidden="true">🇫🇷</span> FR</a>
             </div>
         </div>
-        <nav>
+        <nav aria-label="Navigation principale">
             <div class="logo">
                 Gîtes & Spa - Les 4 Nations
-                <img src="Picture_Logo.png" alt="Logo" class="logo-img">
+                <img src="Picture_Logo.png" alt="Logo Gîtes et Spa Les 4 Nations" class="logo-img">
             </div>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
@@ -44,7 +45,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero">
             <div class="hero-text">
                 <h1>Ressourcez-vous</h1>
@@ -78,16 +79,18 @@
 
     <footer>
         <div class="social-link">
-            <a href="https://www.facebook.com/AdelineBosquet4/" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24">
+            <a href="https://www.facebook.com/AdelineBosquet4/" target="_blank" rel="noopener noreferrer" aria-label="Suivez-nous sur Facebook">
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                 </svg>
                 Suivez-nous sur Facebook
             </a>
         </div>
         <p>&copy; 2025 Gîtes & Spa - Les 4 Nations. Tous droits réservés.</p>
-        <div></div>
     </footer>
+    <script src="./js/mobile-menu.js"></script>
+    <script src="./js/lightbox.js"></script>
+    <script src="./js/scroll-to-top.js"></script>
 </body>
 
 </html>
