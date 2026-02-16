@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* Basic Reset & Body Style */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -101,6 +117,48 @@ nav ul li a:active {
     transition: transform 0.1s, color 0.3s;
 }
 
+/* Hamburger Menu - Hidden on Desktop */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    transform: scale(1.1);
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: #5a6e5a;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Hamburger animation when active */
+.hamburger-menu.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger-menu.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 /* Main Content */
 main {
     padding: 0;
@@ -117,6 +175,17 @@ main {
     padding: 4rem 1rem;
     min-height: 400px;
     position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    pointer-events: none;
 }
 
 .hero-text {
@@ -141,6 +210,7 @@ main {
     margin: 0;
     text-align: left;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .cta-button {
@@ -651,6 +721,7 @@ footer .social-link svg {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
 .contact-form .cta-button {
@@ -681,35 +752,72 @@ footer .social-link svg {
     }
 
     nav {
-        flex-direction: column;
+        flex-direction: row;
         padding: 1rem;
-        gap: 0.5rem;
+        gap: 0;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    /* Show hamburger menu on mobile */
+    .hamburger-menu {
+        display: flex;
+        order: 2;
+    }
+
+    nav .logo {
+        order: 1;
+        font-size: 1.2rem;
     }
 
     nav ul {
-        flex-direction: row;
-        overflow-x: auto;
-        width: 100%;
-        gap: 0.5rem;
-        padding: 0.5rem 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        background-color: #fff;
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: visible;
+        gap: 0;
+        padding: 80px 2rem 2rem 2rem;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
+        scrollbar-width: none;
     }
 
     nav ul::-webkit-scrollbar {
-        height: 4px;
+        display: none;
     }
 
-    nav ul::-webkit-scrollbar-thumb {
-        background: #5a6e5a;
-        border-radius: 2px;
+    /* Mobile menu open state */
+    nav ul.mobile-menu-open {
+        transform: translateX(0);
     }
 
     nav ul li {
         margin-left: 0;
-        margin-right: 1rem;
-        white-space: nowrap;
+        margin-right: 0;
+        margin-bottom: 0;
+        white-space: normal;
         flex-shrink: 0;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1.1rem;
+        width: 100%;
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
     }
 
     .language-switcher {
@@ -748,5 +856,312 @@ footer .social-link svg {
 
     footer .social-link a {
         font-size: 0.85rem;
+    }
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 85%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 50px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 300;
+    line-height: 1;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+    color: #f1f1f1;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 10px 18px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 12px 24px;
+    border-radius: 4px;
+    max-width: 80%;
+    text-align: center;
+    font-size: 16px;
+}
+
+.lightbox-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Mobile responsiveness for lightbox */
+@media (max-width: 768px) {
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .lightbox-prev,
+    .lightbox-next {
+        font-size: 30px;
+        padding: 8px 14px;
+    }
+    
+    .lightbox-prev {
+        left: 10px;
+    }
+    
+    .lightbox-next {
+        right: 10px;
+    }
+    
+    .lightbox-image {
+        max-width: 95%;
+        max-height: 80%;
+    }
+    
+    .lightbox-caption {
+        font-size: 14px;
+        padding: 8px 16px;
+        max-width: 90%;
+        bottom: 50px;
+    }
+    
+    .lightbox-counter {
+        font-size: 12px;
+        padding: 6px 12px;
+        bottom: 15px;
+    }
+}
+
+/* Form Validation Styles */
+.contact-form input.valid,
+.contact-form textarea.valid {
+    border-color: #4CAF50 !important;
+    background-color: #f1f8f4 !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="%234CAF50" d="M8.5 14.5l-4-4 1.4-1.4 2.6 2.6 6.6-6.6 1.4 1.4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px 20px;
+    padding-right: 40px;
+}
+
+.contact-form input.invalid,
+.contact-form textarea.invalid {
+    border: 2px solid #f44336 !important;
+    background-color: #ffebee !important;
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1) !important;
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.contact-form textarea.valid {
+    background-position: right 10px top 10px;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: normal;
+}
+
+.char-counter {
+    font-size: 0.875rem;
+    color: #666;
+    text-align: right;
+    margin-top: 0.25rem;
+}
+
+.char-counter.warning {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.form-notification {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    animation: slideIn 0.3s ease-out;
+}
+
+.form-notification.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-notification.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.form-notification.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.contact-form .cta-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #999;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #5a6e5a;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.3s;
+    z-index: 999;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    background-color: #4a5e4a;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.scroll-to-top svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Mobile adjustments for scroll button */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .scroll-to-top svg {
+        width: 20px;
+        height: 20px;
     }
 }
