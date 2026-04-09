@@ -881,11 +881,6 @@ footer .social-link svg {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
     }
-    
-    /* Hide address bar language switcher on mobile to avoid duplication */
-    .address-bar .language-switcher {
-        display: none;
-    }
 
     .feature img {
         height: 250px;
