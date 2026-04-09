@@ -170,7 +170,10 @@
             input.classList.add('valid');
         }
     }
-     using shared utility
+    
+    // Add character counter to message textarea
+    function addCharacterCounter(textarea) {
+        // Create counter element using shared utility
         const counter = GiteUtils.createElement('div', {
             className: 'char-counter',
             attributes: {
@@ -192,10 +195,7 @@
         const length = textarea.value.length;
         const remaining = formConfig.messageMaxLength - length;
         
-        counter.textContent = `${length} / ${formConfig
-        const remaining = CONFIG.messageMaxLength - length;
-        
-        counter.textContent = `${length} / ${CONFIG.messageMaxLength} ${getErrorMessage('characters')}`;
+        counter.textContent = `${length} / ${formConfig.messageMaxLength} ${getErrorMessage('characters')}`;
         
         if (remaining < 100) {
             counter.classList.add('warning');

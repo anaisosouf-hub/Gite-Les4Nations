@@ -49,6 +49,12 @@
         if (menuConfig.closeOnEscape) {
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
+                    closeMenu(hamburger, navMenu);
+                }
+            });
+        }
+        
+        // Close menu when resizing to desktop
         const handleResize = GiteUtils.debounce(function() {
             // Close menu if resizing to desktop
             if (!GiteUtils.isMobile()) {
@@ -56,19 +62,11 @@
             }
         }, 250);
         
-        window.addEventListener('resize', handleResize   resizeTimer = setTimeout(function() {
-                // Close menu if resizing to desktop
-                if (window.innerWidth > 768) {
-                    closeMenu(hamburger, navMenu);
-                }
-            }, 250);
-        });
+        window.addEventListener('resize', handleResize);
     }
     
     // Create hamburger button element
     function createHamburgerButton() {
-        const button = document.createElement('button');
-        button.className = 'hamburger-menu';
         return GiteUtils.createElement('button', {
             className: 'hamburger-menu',
             attributes: {
@@ -80,7 +78,9 @@
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             `
-        })
+        });
+    }
+    
     // Toggle menu open/close
     function toggleMenu(hamburger, menu) {
         const isOpen = hamburger.classList.contains('active');
