@@ -578,6 +578,18 @@ footer .social-link svg {
     text-decoration: none;
     padding: 0.25rem 0.5rem;
     color:black;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.flag-icon {
+    width: 20px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-radius: 2px;
 }
 
 .language-switcher a:hover {
