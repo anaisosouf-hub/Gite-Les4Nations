@@ -263,11 +263,18 @@
         
         // Send email using EmailJS
         const emailConfig = window.GiteConfig.emailjs;
+        const currentLang = GiteUtils.getLanguage(); // Get current language (en or fr)
+        
+        // Get the correct template ID for the current language
+        const templateId = typeof emailConfig.templateId === 'object' 
+            ? emailConfig.templateId[currentLang] || emailConfig.templateId.fr 
+            : emailConfig.templateId;
         
         // Debug logging
         console.log('Form submission started');
         console.log('EmailJS available:', !!window.emailjs);
-        console.log('Config:', { serviceId: emailConfig.serviceId, templateId: emailConfig.templateId });
+        console.log('Current language:', currentLang);
+        console.log('Config:', { serviceId: emailConfig.serviceId, templateId: templateId });
         console.log('Form data:', formData);
         
         // Check if EmailJS is configured
@@ -291,7 +298,7 @@
         
         // Send email via EmailJS
         console.log('Attempting to send email...');
-        emailjs.send(emailConfig.serviceId, emailConfig.templateId, formData)
+        emailjs.send(emailConfig.serviceId, templateId, formData)
             .then(function(response) {
                 console.log('Email sent successfully:', response.status, response.text);
                 
@@ -417,7 +424,7 @@
                 rateLimited: 'Please wait {minutes} more minute(s) before submitting again',
                 sending: 'Sending...',
                 success: 'Message sent successfully! We will get back to you soon.',
-                sendError: 'Failed to send message. Please try again or contact us directly.',
+                sendError: 'Failed to send message. Please try again',
                 configError: 'Email service not configured. Please contact the site administrator.',
                 sendButton: 'Send'
             },
@@ -436,7 +443,7 @@
                 rateLimited: 'Veuillez patienter {minutes} minute(s) de plus avant de soumettre à nouveau',
                 sending: 'Envoi en cours...',
                 success: 'Message envoyé avec succès ! Nous vous répondrons bientôt.',
-                sendError: 'Échec de l\'envoi du message. Veuillez réessayer ou nous contacter directement.',
+                sendError: 'Échec de l\'envoi du message. Veuillez réessayer de nouveau.',
                 configError: 'Service e-mail non configuré. Veuillez contacter l\'administrateur du site.',
                 sendButton: 'Envoyer'
             }
