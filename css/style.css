@@ -24,6 +24,7 @@ body {
     background-color: #fdfdfd;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* Header and Navigation */
@@ -555,6 +556,18 @@ footer .social-link svg {
     border-radius: 8px;
 }
 
+/* Mobile gallery fix - prevent horizontal overflow */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gallery-grid img {
+        height: 250px;
+    }
+}
+
 /* Language Switcher Styles */
 .language-switcher {
     margin-left: auto;
@@ -565,6 +578,18 @@ footer .social-link svg {
     text-decoration: none;
     padding: 0.25rem 0.5rem;
     color:black;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.flag-icon {
+    width: 20px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    border-radius: 2px;
 }
 
 .language-switcher a:hover {
@@ -834,6 +859,15 @@ footer .social-link svg {
         padding: 2rem 1rem;
         background-position: center top;
     }
+    
+    .content-section {
+        padding: 0rem 0.5rem 0.5rem 0.5rem;
+    }
+    
+    .content-section > *:not(h2) {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
 
     .hero h1 {
         font-size: 2rem;
@@ -846,6 +880,11 @@ footer .social-link svg {
     .address-bar {
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
+    }
+    
+    /* Hide address bar language switcher on mobile to avoid duplication */
+    .address-bar .language-switcher {
+        display: none;
     }
 
     .feature img {
