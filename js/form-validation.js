@@ -234,11 +234,11 @@
         
         // Rate limiting - check last submission time
         if (lastSubmissionTime) {
-            const timeSinceLastSubmit = DformConfig.rateLimitMinutes) {
-                const waitTime = Math.ceil(formConfignceLastSubmit / (1000 * 60);
+            const timeSinceLastSubmit = Date.now() - lastSubmissionTime;
+            const minutesSinceLastSubmit = timeSinceLastSubmit / (1000 * 60);
             
-            if (minutesSinceLastSubmit < CONFIG.rateLimitMinutes) {
-                const waitTime = Math.ceil(CONFIG.rateLimitMinutes - minutesSinceLastSubmit);
+            if (minutesSinceLastSubmit < formConfig.rateLimitMinutes) {
+                const waitTime = Math.ceil(formConfig.rateLimitMinutes - minutesSinceLastSubmit);
                 showNotification(getErrorMessage('rateLimited').replace('{minutes}', waitTime), 'error');
                 return;
             }
