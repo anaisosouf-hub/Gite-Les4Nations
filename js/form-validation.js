@@ -298,8 +298,9 @@
                 // Update last submission time
                 lastSubmissionTime = Date.now();
                 
-                // Show success message
-                showNotification(getErrorMessage('success'), 'success');
+                // Show success message with status code
+                const successMsg = getErrorMessage('success') + ' (Status: ' + response.status + ')';
+                showNotification(successMsg, 'success');
                 
                 // Reset form
                 form.reset();
@@ -335,10 +336,13 @@
                     full: error
                 });
                 
-                // Show detailed error message
+                // Show detailed error message with status
                 let errorMsg = getErrorMessage('sendError');
+                if (error.status) {
+                    errorMsg += ' (Status: ' + error.status + ')';
+                }
                 if (error.text) {
-                    errorMsg += ' (Error: ' + error.text + ')';
+                    errorMsg += ' - ' + error.text;
                 }
                 showNotification(errorMsg, 'error');
                 
@@ -357,11 +361,16 @@
             existing.remove();
         }
         
+        // Add icon based on type
+        const icon = type === 'success' ? '✓' : '✕';
+        const iconHtml = `<span class="notification-icon">${icon}</span>`;
+        const closeBtn = '<button class="notification-close" aria-label="Close notification">&times;</button>';
+        
         const notification = GiteUtils.createElement('div', {
             className: `form-notification ${type}`,
-            textContent: message,
+            innerHTML: iconHtml + '<span class="notification-message">' + message + '</span>' + closeBtn,
             attributes: {
-                'role': 'status',
+                'role': type === 'error' ? 'alert' : 'status',
                 'aria-live': 'polite'
             }
         });
@@ -369,11 +378,23 @@
         const form = document.querySelector('.contact-form form');
         form.parentElement.insertBefore(notification, form);
         
-        // Auto-remove after 5 seconds
-        setTimeout(() => {
+        // Add close button functionality
+        const closeBtnElement = notification.querySelector('.notification-close');
+        closeBtnElement.addEventListener('click', function() {
             notification.classList.add('fade-out');
             setTimeout(() => notification.remove(), animConfig.fadeOutDuration);
-        }, 5000);
+        });
+        
+        // Scroll notification into view
+        notification.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Auto-remove after 8 seconds (longer for users to read)
+        setTimeout(() => {
+            if (document.contains(notification)) {
+                notification.classList.add('fade-out');
+                setTimeout(() => notification.remove(), animConfig.fadeOutDuration);
+            }
+        }, 8000);
     }
     
     // Get error messages (supports both English and French)
