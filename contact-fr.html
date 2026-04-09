@@ -10,6 +10,18 @@
     <link rel="alternate" hreflang="en" href="https://gite-les4nations.azurewebsites.net/contact-en.html">
     <link rel="alternate" hreflang="x-default" href="https://gite-les4nations.azurewebsites.net/contact-fr.html">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/config.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.emailjs && window.GiteConfig && window.GiteConfig.emailjs) {
+                emailjs.init({
+                    publicKey: window.GiteConfig.emailjs.publicKey,
+                });
+            }
+        });
+    </script>
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -94,6 +106,14 @@
                 </div>
             </div>
         </section>
+
+        <section class="content-section about-content">
+            <img src="images/Photo_Adeline.jpeg" alt="Propriétaire des Gîtes Les 4 Nations - Normandie Pays d'Auge">
+            <div>
+                <h2>Rencontrez Adeline</h2>
+                <p>Adeline, propriétaire, mariée et mère de deux enfants, est formée pour prendre soin de vous, passionnée par les massages, elle accorde une grande importance au bien-être et au contact humain.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -108,9 +128,10 @@
         <p>&copy; 2025 Gîtes & Spa - Les 4 Nations. Tous droits réservés.</p>
         <div></div>
     </footer>
+    <script src="./js/utils.js"></script>
     <script src="./js/mobile-menu.js"></script>
-    <script src="./js/lightbox.js"></script>
     <script src="./js/form-validation.js"></script>
+    <script src="./js/smooth-scroll.js"></script>
     <script src="./js/scroll-to-top.js"></script>
 </body>
 

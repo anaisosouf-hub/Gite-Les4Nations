@@ -12,6 +12,9 @@
     let captionElement = null;
     let currentRoomImages = []; // For scoped navigation on rooms pages
     
+    // Initialize when DOM is ready
+    GiteUtils.ready(init);
+    
     // Initialize the lightbox when the page loads
     function init() {
         // Create the lightbox HTML structure
@@ -23,7 +26,7 @@
             const imgElements = mainContent.querySelectorAll('img');
             // Filter out avatar/profile images
             images = Array.from(imgElements).filter(img => 
-                !img.src.includes('avatar.avif') && 
+                !img.src.includes('Photo_Adeline.jpeg') && 
                 !img.alt.toLowerCase().includes('propriétaire') &&
                 !img.alt.toLowerCase().includes('owner')
             );

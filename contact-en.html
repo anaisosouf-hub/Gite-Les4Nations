@@ -10,6 +10,18 @@
     <link rel="alternate" hreflang="en" href="https://gite-les4nations.azurewebsites.net/contact-en.html">
     <link rel="alternate" hreflang="x-default" href="https://gite-les4nations.azurewebsites.net/contact-fr.html">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/config.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.emailjs && window.GiteConfig && window.GiteConfig.emailjs) {
+                emailjs.init({
+                    publicKey: window.GiteConfig.emailjs.publicKey,
+                });
+            }
+        });
+    </script>
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -94,6 +106,14 @@
                 </div>
             </div>
         </section>
+
+        <section class="content-section about-content">
+            <img src="images/Photo_Adeline.jpeg" alt="Owner of Les 4 Nations Cottages - Normandy Pays d'Auge">
+            <div>
+                <h2>Meet Adeline</h2>
+                <p>Adeline, owner, married and mother of two children, is trained to take care of you. Passionate about massages, she places great importance on well-being and human connection.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -107,9 +127,10 @@
         </div>
         <p>&copy; 2025 Gites & Spa - Les 4 Nations. All rights reserved.</p>
     </footer>
+    <script src="./js/utils.js"></script>
     <script src="./js/mobile-menu.js"></script>
-    <script src="./js/lightbox.js"></script>
     <script src="./js/form-validation.js"></script>
+    <script src="./js/smooth-scroll.js"></script>
     <script src="./js/scroll-to-top.js"></script>
 </body>
 

@@ -526,13 +526,18 @@ footer .social-link svg {
 }
 
 .about-content img {
-    max-width: 400px;
-    border-radius: 50%;
+    max-width: 250px;
+    border-radius: 80px;
+    display: block;
 }
 
 @media (max-width: 768px) {
     .about-content {
         flex-direction: column;
+    }
+
+    .about-content img {
+        max-width: 150px;
     }
 }
 

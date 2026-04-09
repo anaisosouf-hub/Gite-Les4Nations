@@ -4,12 +4,11 @@
 (function() {
     'use strict';
     
+    // Use shared configuration
+    const menuConfig = window.GiteConfig.mobileMenu;
+    
     // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
+    GiteUtils.ready(init);
     
     function init() {
         const nav = document.querySelector('header nav');
@@ -27,33 +26,37 @@
             toggleMenu(hamburger, navMenu);
         });
         
-        // Close menu when clicking a link
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                closeMenu(hamburger, navMenu);
+        // Close menu when clicking a link (if configured)
+        if (menuConfig.closeOnLinkClick) {
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMenu(hamburger, navMenu);
+                });
             });
-        });
+        }
         
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!nav.contains(e.target)) {
+        // Close menu when clicking outside (if configured)
+        if (menuConfig.closeOnOutsideClick) {
+            document.addEventListener('click', function(e) {
+                if (!nav.contains(e.target)) {
+                    closeMenu(hamburger, navMenu);
+                }
+            });
+        }
+        
+        // Close menu on escape key (if configured)
+        if (menuConfig.closeOnEscape) {
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+        const handleResize = GiteUtils.debounce(function() {
+            // Close menu if resizing to desktop
+            if (!GiteUtils.isMobile()) {
                 closeMenu(hamburger, navMenu);
             }
-        });
+        }, 250);
         
-        // Close menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeMenu(hamburger, navMenu);
-            }
-        });
-        
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function() {
+        window.addEventListener('resize', handleResize   resizeTimer = setTimeout(function() {
                 // Close menu if resizing to desktop
                 if (window.innerWidth > 768) {
                     closeMenu(hamburger, navMenu);
@@ -66,19 +69,18 @@
     function createHamburgerButton() {
         const button = document.createElement('button');
         button.className = 'hamburger-menu';
-        button.setAttribute('aria-label', 'Toggle navigation menu');
-        button.setAttribute('aria-expanded', 'false');
-        
-        // Create hamburger icon (3 lines)
-        button.innerHTML = `
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        `;
-        
-        return button;
-    }
-    
+        return GiteUtils.createElement('button', {
+            className: 'hamburger-menu',
+            attributes: {
+                'aria-label': 'Toggle navigation menu',
+                'aria-expanded': 'false'
+            },
+            innerHTML: `
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            `
+        })
     // Toggle menu open/close
     function toggleMenu(hamburger, menu) {
         const isOpen = hamburger.classList.contains('active');
