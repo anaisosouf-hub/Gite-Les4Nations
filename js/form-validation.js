@@ -4,25 +4,16 @@
 (function() {
     'use strict';
     
-    // Configuration
-    const CONFIG = {
-        nameMinLength: 2,
-        messageMinLength: 10,
-        messageMaxLength: 1000,
-        maxLinksAllowed: 2,
-        rateLimitMinutes: 2
-    };
+    // Use shared configuration
+    const formConfig = window.GiteConfig.form;
+    const animConfig = window.GiteConfig.animation;
     
     // State management
     let isSubmitting = false;
     let lastSubmissionTime = null;
     
     // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
+    GiteUtils.ready(init);
     
     function init() {
         const form = document.querySelector('.contact-form form');
@@ -81,7 +72,7 @@
             return getErrorMessage('nameRequired');
         }
         
-        if (value.length < CONFIG.nameMinLength) {
+        if (value.length < formConfig.nameMinLength) {
             return getErrorMessage('nameTooShort');
         }
         
@@ -126,11 +117,11 @@
             return getErrorMessage('messageRequired');
         }
         
-        if (value.length < CONFIG.messageMinLength) {
+        if (value.length < formConfig.messageMinLength) {
             return getErrorMessage('messageTooShort');
         }
         
-        if (value.length > CONFIG.messageMaxLength) {
+        if (value.length > formConfig.messageMaxLength) {
             return getErrorMessage('messageTooLong');
         }
         
@@ -138,7 +129,7 @@
         const urlRegex = /(https?:\/\/[^\s]+)|(www\.[^\s]+)/gi;
         const links = value.match(urlRegex) || [];
         
-        if (links.length > CONFIG.maxLinksAllowed) {
+        if (links.length > formConfig.maxLinksAllowed) {
             return getErrorMessage('tooManyLinks');
         }
         
@@ -165,11 +156,14 @@
             // Invalid state
             input.classList.add('invalid');
             
-            // Add error message right after the input
-            errorElement = document.createElement('span');
-            errorElement.className = 'error-message';
-            errorElement.textContent = errorMessage;
-            errorElement.setAttribute('role', 'alert');
+            // Add error message right after the input using shared utility
+            errorElement = GiteUtils.createElement('span', {
+                className: 'error-message',
+                textContent: errorMessage,
+                attributes: {
+                    'role': 'alert'
+                }
+            });
             input.insertAdjacentElement('afterend', errorElement);
         } else if (input.value.trim()) {
             // Valid state (only if field has content)
@@ -177,12 +171,15 @@
         }
     }
     
-    // Add character counter for textarea
+    // Add character counter to message textarea
     function addCharacterCounter(textarea) {
-        // Create counter element
-        const counter = document.createElement('div');
-        counter.className = 'char-counter';
-        counter.setAttribute('aria-live', 'polite');
+        // Create counter element using shared utility
+        const counter = GiteUtils.createElement('div', {
+            className: 'char-counter',
+            attributes: {
+                'aria-live': 'polite'
+            }
+        });
         updateCounter(textarea, counter);
         
         // Insert counter right after textarea
@@ -196,9 +193,9 @@
     
     function updateCounter(textarea, counter) {
         const length = textarea.value.length;
-        const remaining = CONFIG.messageMaxLength - length;
+        const remaining = formConfig.messageMaxLength - length;
         
-        counter.textContent = `${length} / ${CONFIG.messageMaxLength} ${getErrorMessage('characters')}`;
+        counter.textContent = `${length} / ${formConfig.messageMaxLength} ${getErrorMessage('characters')}`;
         
         if (remaining < 100) {
             counter.classList.add('warning');
@@ -240,8 +237,8 @@
             const timeSinceLastSubmit = Date.now() - lastSubmissionTime;
             const minutesSinceLastSubmit = timeSinceLastSubmit / (1000 * 60);
             
-            if (minutesSinceLastSubmit < CONFIG.rateLimitMinutes) {
-                const waitTime = Math.ceil(CONFIG.rateLimitMinutes - minutesSinceLastSubmit);
+            if (minutesSinceLastSubmit < formConfig.rateLimitMinutes) {
+                const waitTime = Math.ceil(formConfig.rateLimitMinutes - minutesSinceLastSubmit);
                 showNotification(getErrorMessage('rateLimited').replace('{minutes}', waitTime), 'error');
                 return;
             }
@@ -258,49 +255,108 @@
         
         // Trim all values
         const formData = {
-            name: nameInput.value.trim(),
-            email: emailInput.value.trim(),
-            message: messageInput.value.trim()
+            from_name: nameInput.value.trim(),
+            from_email: emailInput.value.trim(),
+            message: messageInput.value.trim(),
+            to_email: window.GiteConfig.emailjs.recipientEmail
         };
         
-        // Simulate form submission (replace with actual submission logic)
-        setTimeout(() => {
-            // Here you would normally send the data to your server
-            console.log('Form submitted:', formData);
-            
-            // Update last submission time
-            lastSubmissionTime = Date.now();
-            
-            // Show success message
-            showNotification(getErrorMessage('success'), 'success');
-            
-            // Reset form
-            form.reset();
-            
-            // Clear validation states
-            [nameInput, emailInput, messageInput].forEach(input => {
-                input.classList.remove('valid', 'invalid', 'touched');
-                const errorElement = input.nextElementSibling;
-                if (errorElement && errorElement.classList.contains('error-message')) {
-                    errorElement.remove();
-                }
-            });
-            
-            // Reset submit button
+        // Send email using EmailJS
+        const emailConfig = window.GiteConfig.emailjs;
+        const currentLang = GiteUtils.getLanguage(); // Get current language (en or fr)
+        
+        // Get the correct template ID for the current language
+        const templateId = typeof emailConfig.templateId === 'object' 
+            ? emailConfig.templateId[currentLang] || emailConfig.templateId.fr 
+            : emailConfig.templateId;
+        
+        // Debug logging
+        console.log('Form submission started');
+        console.log('EmailJS available:', !!window.emailjs);
+        console.log('Current language:', currentLang);
+        console.log('Config:', { serviceId: emailConfig.serviceId, templateId: templateId });
+        console.log('Form data:', formData);
+        
+        // Check if EmailJS is configured
+        if (!window.emailjs) {
+            console.error('EmailJS library not loaded! Check if emailjs.min.js is loaded correctly.');
+            showNotification('Email service not available. Please check your internet connection or try again later.', 'error');
             isSubmitting = false;
             submitButton.disabled = false;
             submitButton.textContent = getErrorMessage('sendButton');
-            
-            // Update character counter
-            let counter = messageInput.nextElementSibling;
-            while (counter) {
-                if (counter.classList.contains('char-counter')) {
-                    updateCounter(messageInput, counter);
-                    break;
+            return;
+        }
+        
+        if (emailConfig.publicKey === 'YOUR_PUBLIC_KEY') {
+            console.error('EmailJS not configured. Please update config.js with your EmailJS credentials.');
+            showNotification(getErrorMessage('configError'), 'error');
+            isSubmitting = false;
+            submitButton.disabled = false;
+            submitButton.textContent = getErrorMessage('sendButton');
+            return;
+        }
+        
+        // Send email via EmailJS
+        console.log('Attempting to send email...');
+        emailjs.send(emailConfig.serviceId, templateId, formData)
+            .then(function(response) {
+                console.log('Email sent successfully:', response.status, response.text);
+                
+                // Update last submission time
+                lastSubmissionTime = Date.now();
+                
+                // Show success message (status code logged to console only)
+                showNotification(getErrorMessage('success'), 'success');
+                
+                // Reset form
+                form.reset();
+                
+                // Clear validation states
+                [nameInput, emailInput, messageInput].forEach(input => {
+                    input.classList.remove('valid', 'invalid', 'touched');
+                    const errorElement = input.nextElementSibling;
+                    if (errorElement && errorElement.classList.contains('error-message')) {
+                        errorElement.remove();
+                    }
+                });
+                
+                // Reset submit button
+                isSubmitting = false;
+                submitButton.disabled = false;
+                submitButton.textContent = getErrorMessage('sendButton');
+                
+                // Update character counter
+                let counter = messageInput.nextElementSibling;
+                while (counter) {
+                    if (counter.classList.contains('char-counter')) {
+                        updateCounter(messageInput, counter);
+                        break;
+                    }
+                    counter = counter.nextElementSibling;
                 }
-                counter = counter.nextElementSibling;
-            }
-        }, 1500);
+            }, function(error) {
+                console.error('Failed to send email:', error);
+                console.error('Error details:', {
+                    status: error.status,
+                    text: error.text,
+                    full: error
+                });
+                
+                // Show detailed error message with status
+                let errorMsg = getErrorMessage('sendError');
+                if (error.status) {
+                    errorMsg += ' (Status: ' + error.status + ')';
+                }
+                if (error.text) {
+                    errorMsg += ' - ' + error.text;
+                }
+                showNotification(errorMsg, 'error');
+                
+                // Reset submit button
+                isSubmitting = false;
+                submitButton.disabled = false;
+                submitButton.textContent = getErrorMessage('sendButton');
+            });
     }
     
     // Show notification message
@@ -311,25 +367,45 @@
             existing.remove();
         }
         
-        const notification = document.createElement('div');
-        notification.className = `form-notification ${type}`;
-        notification.textContent = message;
-        notification.setAttribute('role', 'status');
-        notification.setAttribute('aria-live', 'polite');
+        // Add icon based on type
+        const icon = type === 'success' ? '✓' : '✕';
+        const iconHtml = `<span class="notification-icon">${icon}</span>`;
+        const closeBtn = '<button class="notification-close" aria-label="Close notification">&times;</button>';
+        
+        const notification = GiteUtils.createElement('div', {
+            className: `form-notification ${type}`,
+            innerHTML: iconHtml + '<span class="notification-message">' + message + '</span>' + closeBtn,
+            attributes: {
+                'role': type === 'error' ? 'alert' : 'status',
+                'aria-live': 'polite'
+            }
+        });
         
         const form = document.querySelector('.contact-form form');
         form.parentElement.insertBefore(notification, form);
         
-        // Auto-remove after 5 seconds
-        setTimeout(() => {
+        // Add close button functionality
+        const closeBtnElement = notification.querySelector('.notification-close');
+        closeBtnElement.addEventListener('click', function() {
             notification.classList.add('fade-out');
-            setTimeout(() => notification.remove(), 300);
-        }, 5000);
+            setTimeout(() => notification.remove(), animConfig.fadeOutDuration);
+        });
+        
+        // Scroll notification into view
+        notification.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Auto-remove after 8 seconds (longer for users to read)
+        setTimeout(() => {
+            if (document.contains(notification)) {
+                notification.classList.add('fade-out');
+                setTimeout(() => notification.remove(), animConfig.fadeOutDuration);
+            }
+        }, 8000);
     }
     
     // Get error messages (supports both English and French)
     function getErrorMessage(key) {
-        const lang = document.documentElement.lang || 'en';
+        const lang = GiteUtils.getLanguage();
         
         const messages = {
             en: {
@@ -347,6 +423,8 @@
                 rateLimited: 'Please wait {minutes} more minute(s) before submitting again',
                 sending: 'Sending...',
                 success: 'Message sent successfully! We will get back to you soon.',
+                sendError: 'Failed to send message. Please try again',
+                configError: 'Email service not configured. Please contact the site administrator.',
                 sendButton: 'Send'
             },
             fr: {
@@ -364,6 +442,8 @@
                 rateLimited: 'Veuillez patienter {minutes} minute(s) de plus avant de soumettre à nouveau',
                 sending: 'Envoi en cours...',
                 success: 'Message envoyé avec succès ! Nous vous répondrons bientôt.',
+                sendError: 'Échec de l\'envoi du message. Veuillez réessayer de nouveau.',
+                configError: 'Service e-mail non configuré. Veuillez contacter l\'administrateur du site.',
                 sendButton: 'Envoyer'
             }
         };
