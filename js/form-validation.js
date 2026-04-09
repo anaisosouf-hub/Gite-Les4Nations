@@ -305,9 +305,8 @@
                 // Update last submission time
                 lastSubmissionTime = Date.now();
                 
-                // Show success message with status code
-                const successMsg = getErrorMessage('success') + ' (Status: ' + response.status + ')';
-                showNotification(successMsg, 'success');
+                // Show success message (status code logged to console only)
+                showNotification(getErrorMessage('success'), 'success');
                 
                 // Reset form
                 form.reset();
