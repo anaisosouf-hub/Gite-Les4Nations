@@ -264,8 +264,23 @@
         // Send email using EmailJS
         const emailConfig = window.GiteConfig.emailjs;
         
+        // Debug logging
+        console.log('Form submission started');
+        console.log('EmailJS available:', !!window.emailjs);
+        console.log('Config:', { serviceId: emailConfig.serviceId, templateId: emailConfig.templateId });
+        console.log('Form data:', formData);
+        
         // Check if EmailJS is configured
-        if (!window.emailjs || emailConfig.publicKey === 'YOUR_PUBLIC_KEY') {
+        if (!window.emailjs) {
+            console.error('EmailJS library not loaded! Check if emailjs.min.js is loaded correctly.');
+            showNotification('Email service not available. Please check your internet connection or try again later.', 'error');
+            isSubmitting = false;
+            submitButton.disabled = false;
+            submitButton.textContent = getErrorMessage('sendButton');
+            return;
+        }
+        
+        if (emailConfig.publicKey === 'YOUR_PUBLIC_KEY') {
             console.error('EmailJS not configured. Please update config.js with your EmailJS credentials.');
             showNotification(getErrorMessage('configError'), 'error');
             isSubmitting = false;
@@ -275,6 +290,7 @@
         }
         
         // Send email via EmailJS
+        console.log('Attempting to send email...');
         emailjs.send(emailConfig.serviceId, emailConfig.templateId, formData)
             .then(function(response) {
                 console.log('Email sent successfully:', response.status, response.text);
@@ -313,9 +329,18 @@
                 }
             }, function(error) {
                 console.error('Failed to send email:', error);
+                console.error('Error details:', {
+                    status: error.status,
+                    text: error.text,
+                    full: error
+                });
                 
-                // Show error message
-                showNotification(getErrorMessage('sendError'), 'error');
+                // Show detailed error message
+                let errorMsg = getErrorMessage('sendError');
+                if (error.text) {
+                    errorMsg += ' (Error: ' + error.text + ')';
+                }
+                showNotification(errorMsg, 'error');
                 
                 // Reset submit button
                 isSubmitting = false;

@@ -11,14 +11,21 @@
     <link rel="alternate" hreflang="x-default" href="https://gite-les4nations.azurewebsites.net/contact-fr.html">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/config.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript" src="./js/emailjs.min.js"></script>
     <script type="text/javascript">
         // Initialize EmailJS when DOM is ready
         document.addEventListener('DOMContentLoaded', function() {
             if (window.emailjs && window.GiteConfig && window.GiteConfig.emailjs) {
-                emailjs.init({
-                    publicKey: window.GiteConfig.emailjs.publicKey,
-                });
+                try {
+                    emailjs.init({
+                        publicKey: window.GiteConfig.emailjs.publicKey,
+                    });
+                    console.log('EmailJS initialized successfully');
+                } catch (error) {
+                    console.error('EmailJS initialization error:', error);
+                }
+            } else {
+                console.error('EmailJS not loaded or config missing');
             }
         });
     </script>
