@@ -34,7 +34,7 @@
         // TO COMPLETE: Sign up at https://www.emailjs.com/ and replace these values
         emailjs: {
             publicKey: 'PpLFVuLX4TKktyUBT',  // Replace with your EmailJS public key
-            serviceId: 'service_2u4daol',   // Replace with your EmailJS service ID
+            serviceId: 'service_9ywuprs',   // Replace with your EmailJS service ID
             templateId: {
                 fr: 'template_2phaglq',     // French template ID
                 en: 'template_3ukn6jv'      // English template ID
