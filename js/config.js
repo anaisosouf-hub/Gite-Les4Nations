@@ -39,7 +39,7 @@
                 fr: 'template_2phaglq',     // French template ID
                 en: 'template_3ukn6jv'      // English template ID
             },
-            recipientEmail: 'skyla_melisse@msn.com' // Your email address (used in template)
+            recipientEmail: 'adeline.bosquet@yahoo.com' // Your email address (used in template)
         },
         
         // Mobile menu settings
